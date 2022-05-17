@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:flutter/widgets.dart';
 
 class SizeConfig {
@@ -30,8 +31,10 @@ class SizeConfig {
     _blockHeight = _screenHeight / 100;
     screenwidth = _screenWidth;
     screenheight = _screenHeight;
-    textMultiplier =
-        ((_blockHeight / _blockWidth) * (_blockHeight / _blockWidth));
+    textMultiplier = [
+      _blockWidth + 1,
+      _blockHeight + 1,
+    ].average;
     imageSizeMultiplier = _blockWidth;
     heightMultiplier = _blockHeight;
     widthMultiplier = _blockWidth;

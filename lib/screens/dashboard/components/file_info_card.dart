@@ -28,17 +28,18 @@ class FileInfoCard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
-                padding: EdgeInsets.all(defaultPadding * 0.75),
-                height: 40,
-                width: 40,
-                decoration: BoxDecoration(
-                  color: info.color!.withOpacity(0.1),
-                  borderRadius: const BorderRadius.all(Radius.circular(10)),
-                ),
-                child: SvgPicture.asset(
-                  info.svgSrc!,
-                  color: info.color,
+              Expanded(
+                child: Container(
+                  width: SizeConfig.widthMultiplier * 5,
+                  padding: EdgeInsets.all(defaultPadding * 0.75),
+                  decoration: BoxDecoration(
+                    color: info.color!.withOpacity(0.1),
+                    borderRadius: const BorderRadius.all(Radius.circular(10)),
+                  ),
+                  child: SvgPicture.asset(
+                    info.svgSrc!,
+                    color: info.color,
+                  ),
                 ),
               ),
               Icon(Icons.more_vert, color: Colors.white54)
@@ -53,24 +54,20 @@ class FileInfoCard extends StatelessWidget {
             color: info.color,
             percentage: info.percentage,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "${info.numOfFiles} Files",
-                style: Theme.of(context)
-                    .textTheme
-                    .caption!
-                    .copyWith(color: Colors.white70),
-              ),
-              Text(
-                info.totalStorage!,
-                style: Theme.of(context)
-                    .textTheme
-                    .caption!
-                    .copyWith(color: Colors.white),
-              ),
-            ],
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text("${info.numOfFiles} Files",
+                    style: TextStyle(
+                        fontSize: SizeConfig.textMultiplier * 1,
+                        color: Colors.white)),
+                Text(info.totalStorage!,
+                    style: TextStyle(
+                        fontSize: SizeConfig.textMultiplier * 1,
+                        color: Colors.white)),
+              ],
+            ),
           )
         ],
       ),
@@ -93,21 +90,19 @@ class ProgressLine extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          width: double.infinity,
+          width: SizeConfig.widthMultiplier,
           height: 5,
           decoration: BoxDecoration(
             color: color!.withOpacity(0.1),
             borderRadius: BorderRadius.all(Radius.circular(10)),
           ),
         ),
-        LayoutBuilder(
-          builder: (context, constraints) => Container(
-            width: SizeConfig.screenwidth * (percentage! / 100),
-            height: 5,
-            decoration: BoxDecoration(
-              color: color,
-              borderRadius: BorderRadius.all(Radius.circular(10)),
-            ),
+        Container(
+          width: SizeConfig.widthMultiplier * (percentage! / 100),
+          height: 5,
+          decoration: BoxDecoration(
+            color: color,
+            borderRadius: BorderRadius.all(Radius.circular(10)),
           ),
         ),
       ],

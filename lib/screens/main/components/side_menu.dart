@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../dashboard/components/header.dart';
+
 class SideMenu extends StatelessWidget {
   const SideMenu({
     Key? key,
@@ -12,7 +14,7 @@ class SideMenu extends StatelessWidget {
       child: ListView(
         children: [
           DrawerHeader(
-            child: Image.asset("assets/images/logo.png"),
+            child: ProfileCard(),
           ),
           DrawerListTile(
             title: "Dashboard",

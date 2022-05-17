@@ -12,35 +12,35 @@
 12         to allow setting breakpoints, to provide hot reload, etc.
 13    -->
 14    <uses-permission android:name="android.permission.INTERNET" />
-14-->/Users/ociuz/PROJECTS/Flutter-Responsive-Admin-Panel-or-Dashboard/android/app/src/debug/AndroidManifest.xml:6:5-66
-14-->/Users/ociuz/PROJECTS/Flutter-Responsive-Admin-Panel-or-Dashboard/android/app/src/debug/AndroidManifest.xml:6:22-64
+14-->/Users/ociuz/PROJECTS/admin-Panel/android/app/src/debug/AndroidManifest.xml:6:5-66
+14-->/Users/ociuz/PROJECTS/admin-Panel/android/app/src/debug/AndroidManifest.xml:6:22-64
 15
 16    <application
-16-->/Users/ociuz/PROJECTS/Flutter-Responsive-Admin-Panel-or-Dashboard/android/app/src/main/AndroidManifest.xml:3:4-41:19
+16-->/Users/ociuz/PROJECTS/admin-Panel/android/app/src/main/AndroidManifest.xml:3:4-41:19
 17        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 17-->[androidx.core:core:1.6.0] /Users/ociuz/.gradle/caches/transforms-3/b616cb6807ebc15b3b360954647323e5/transformed/core-1.6.0/AndroidManifest.xml:24:18-86
 18        android:debuggable="true"
 19        android:extractNativeLibs="false"
 20        android:icon="@mipmap/ic_launcher"
-20-->/Users/ociuz/PROJECTS/Flutter-Responsive-Admin-Panel-or-Dashboard/android/app/src/main/AndroidManifest.xml:5:9-43
+20-->/Users/ociuz/PROJECTS/admin-Panel/android/app/src/main/AndroidManifest.xml:5:9-43
 21        android:label="admin" >
-21-->/Users/ociuz/PROJECTS/Flutter-Responsive-Admin-Panel-or-Dashboard/android/app/src/main/AndroidManifest.xml:4:9-30
+21-->/Users/ociuz/PROJECTS/admin-Panel/android/app/src/main/AndroidManifest.xml:4:9-30
 22        <activity
-22-->/Users/ociuz/PROJECTS/Flutter-Responsive-Admin-Panel-or-Dashboard/android/app/src/main/AndroidManifest.xml:6:9-35:20
+22-->/Users/ociuz/PROJECTS/admin-Panel/android/app/src/main/AndroidManifest.xml:6:9-35:20
 23            android:name="com.example.admin.MainActivity"
-23-->/Users/ociuz/PROJECTS/Flutter-Responsive-Admin-Panel-or-Dashboard/android/app/src/main/AndroidManifest.xml:7:13-41
+23-->/Users/ociuz/PROJECTS/admin-Panel/android/app/src/main/AndroidManifest.xml:7:13-41
 24            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
-24-->/Users/ociuz/PROJECTS/Flutter-Responsive-Admin-Panel-or-Dashboard/android/app/src/main/AndroidManifest.xml:11:13-163
+24-->/Users/ociuz/PROJECTS/admin-Panel/android/app/src/main/AndroidManifest.xml:11:13-163
 25            android:exported="true"
-25-->/Users/ociuz/PROJECTS/Flutter-Responsive-Admin-Panel-or-Dashboard/android/app/src/main/AndroidManifest.xml:9:13-36
+25-->/Users/ociuz/PROJECTS/admin-Panel/android/app/src/main/AndroidManifest.xml:9:13-36
 26            android:hardwareAccelerated="true"
-26-->/Users/ociuz/PROJECTS/Flutter-Responsive-Admin-Panel-or-Dashboard/android/app/src/main/AndroidManifest.xml:12:13-47
+26-->/Users/ociuz/PROJECTS/admin-Panel/android/app/src/main/AndroidManifest.xml:12:13-47
 27            android:launchMode="singleTop"
-27-->/Users/ociuz/PROJECTS/Flutter-Responsive-Admin-Panel-or-Dashboard/android/app/src/main/AndroidManifest.xml:8:13-43
+27-->/Users/ociuz/PROJECTS/admin-Panel/android/app/src/main/AndroidManifest.xml:8:13-43
 28            android:theme="@style/LaunchTheme"
-28-->/Users/ociuz/PROJECTS/Flutter-Responsive-Admin-Panel-or-Dashboard/android/app/src/main/AndroidManifest.xml:10:13-47
+28-->/Users/ociuz/PROJECTS/admin-Panel/android/app/src/main/AndroidManifest.xml:10:13-47
 29            android:windowSoftInputMode="adjustResize" >
-29-->/Users/ociuz/PROJECTS/Flutter-Responsive-Admin-Panel-or-Dashboard/android/app/src/main/AndroidManifest.xml:13:13-55
+29-->/Users/ociuz/PROJECTS/admin-Panel/android/app/src/main/AndroidManifest.xml:13:13-55
 30
 31            <!--
 32                 Specifies an Android theme to apply to this Activity as soon as
@@ -49,11 +49,11 @@
 35                 to determine the Window background behind the Flutter UI.
 36            -->
 37            <meta-data
-37-->/Users/ociuz/PROJECTS/Flutter-Responsive-Admin-Panel-or-Dashboard/android/app/src/main/AndroidManifest.xml:18:13-21:17
+37-->/Users/ociuz/PROJECTS/admin-Panel/android/app/src/main/AndroidManifest.xml:18:13-21:17
 38                android:name="io.flutter.embedding.android.NormalTheme"
-38-->/Users/ociuz/PROJECTS/Flutter-Responsive-Admin-Panel-or-Dashboard/android/app/src/main/AndroidManifest.xml:19:15-70
+38-->/Users/ociuz/PROJECTS/admin-Panel/android/app/src/main/AndroidManifest.xml:19:15-70
 39                android:resource="@style/NormalTheme" />
-39-->/Users/ociuz/PROJECTS/Flutter-Responsive-Admin-Panel-or-Dashboard/android/app/src/main/AndroidManifest.xml:20:15-52
+39-->/Users/ociuz/PROJECTS/admin-Panel/android/app/src/main/AndroidManifest.xml:20:15-52
 40            <!--
 41                 Displays an Android View that continues showing the launch screen
 42                 Drawable until Flutter paints its first frame, then this splash
@@ -62,21 +62,21 @@
 45                 Flutter's first frame.
 46            -->
 47            <meta-data
-47-->/Users/ociuz/PROJECTS/Flutter-Responsive-Admin-Panel-or-Dashboard/android/app/src/main/AndroidManifest.xml:27:13-30:17
+47-->/Users/ociuz/PROJECTS/admin-Panel/android/app/src/main/AndroidManifest.xml:27:13-30:17
 48                android:name="io.flutter.embedding.android.SplashScreenDrawable"
-48-->/Users/ociuz/PROJECTS/Flutter-Responsive-Admin-Panel-or-Dashboard/android/app/src/main/AndroidManifest.xml:28:15-79
+48-->/Users/ociuz/PROJECTS/admin-Panel/android/app/src/main/AndroidManifest.xml:28:15-79
 49                android:resource="@drawable/launch_background" />
-49-->/Users/ociuz/PROJECTS/Flutter-Responsive-Admin-Panel-or-Dashboard/android/app/src/main/AndroidManifest.xml:29:15-61
+49-->/Users/ociuz/PROJECTS/admin-Panel/android/app/src/main/AndroidManifest.xml:29:15-61
 50
 51            <intent-filter>
-51-->/Users/ociuz/PROJECTS/Flutter-Responsive-Admin-Panel-or-Dashboard/android/app/src/main/AndroidManifest.xml:31:13-34:29
+51-->/Users/ociuz/PROJECTS/admin-Panel/android/app/src/main/AndroidManifest.xml:31:13-34:29
 52                <action android:name="android.intent.action.MAIN" />
-52-->/Users/ociuz/PROJECTS/Flutter-Responsive-Admin-Panel-or-Dashboard/android/app/src/main/AndroidManifest.xml:32:17-68
-52-->/Users/ociuz/PROJECTS/Flutter-Responsive-Admin-Panel-or-Dashboard/android/app/src/main/AndroidManifest.xml:32:25-66
+52-->/Users/ociuz/PROJECTS/admin-Panel/android/app/src/main/AndroidManifest.xml:32:17-68
+52-->/Users/ociuz/PROJECTS/admin-Panel/android/app/src/main/AndroidManifest.xml:32:25-66
 53
 54                <category android:name="android.intent.category.LAUNCHER" />
-54-->/Users/ociuz/PROJECTS/Flutter-Responsive-Admin-Panel-or-Dashboard/android/app/src/main/AndroidManifest.xml:33:17-76
-54-->/Users/ociuz/PROJECTS/Flutter-Responsive-Admin-Panel-or-Dashboard/android/app/src/main/AndroidManifest.xml:33:27-74
+54-->/Users/ociuz/PROJECTS/admin-Panel/android/app/src/main/AndroidManifest.xml:33:17-76
+54-->/Users/ociuz/PROJECTS/admin-Panel/android/app/src/main/AndroidManifest.xml:33:27-74
 55            </intent-filter>
 56        </activity>
 57        <!--
@@ -84,24 +84,42 @@
 59             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
 60        -->
 61        <meta-data
-61-->/Users/ociuz/PROJECTS/Flutter-Responsive-Admin-Panel-or-Dashboard/android/app/src/main/AndroidManifest.xml:38:9-40:33
+61-->/Users/ociuz/PROJECTS/admin-Panel/android/app/src/main/AndroidManifest.xml:38:9-40:33
 62            android:name="flutterEmbedding"
-62-->/Users/ociuz/PROJECTS/Flutter-Responsive-Admin-Panel-or-Dashboard/android/app/src/main/AndroidManifest.xml:39:13-44
+62-->/Users/ociuz/PROJECTS/admin-Panel/android/app/src/main/AndroidManifest.xml:39:13-44
 63            android:value="2" />
-63-->/Users/ociuz/PROJECTS/Flutter-Responsive-Admin-Panel-or-Dashboard/android/app/src/main/AndroidManifest.xml:40:13-30
+63-->/Users/ociuz/PROJECTS/admin-Panel/android/app/src/main/AndroidManifest.xml:40:13-30
 64
-65        <uses-library
-65-->[androidx.window:window:1.0.0-beta04] /Users/ociuz/.gradle/caches/transforms-3/fa97b35e32acf90ee4ed643651f0a2d3/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:25:9-27:40
-66            android:name="androidx.window.extensions"
-66-->[androidx.window:window:1.0.0-beta04] /Users/ociuz/.gradle/caches/transforms-3/fa97b35e32acf90ee4ed643651f0a2d3/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:26:13-54
-67            android:required="false" />
-67-->[androidx.window:window:1.0.0-beta04] /Users/ociuz/.gradle/caches/transforms-3/fa97b35e32acf90ee4ed643651f0a2d3/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:27:13-37
-68        <uses-library
-68-->[androidx.window:window:1.0.0-beta04] /Users/ociuz/.gradle/caches/transforms-3/fa97b35e32acf90ee4ed643651f0a2d3/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:28:9-30:40
-69            android:name="androidx.window.sidecar"
-69-->[androidx.window:window:1.0.0-beta04] /Users/ociuz/.gradle/caches/transforms-3/fa97b35e32acf90ee4ed643651f0a2d3/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:29:13-51
-70            android:required="false" />
-70-->[androidx.window:window:1.0.0-beta04] /Users/ociuz/.gradle/caches/transforms-3/fa97b35e32acf90ee4ed643651f0a2d3/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:30:13-37
-71    </application>
-72
-73</manifest>
+65        <provider
+65-->[:image_picker_android] /Users/ociuz/PROJECTS/admin-Panel/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:10:9-18:20
+66            android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
+66-->[:image_picker_android] /Users/ociuz/PROJECTS/admin-Panel/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-82
+67            android:authorities="com.example.admin.flutter.image_provider"
+67-->[:image_picker_android] /Users/ociuz/PROJECTS/admin-Panel/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:12:13-74
+68            android:exported="false"
+68-->[:image_picker_android] /Users/ociuz/PROJECTS/admin-Panel/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:13:13-37
+69            android:grantUriPermissions="true" >
+69-->[:image_picker_android] /Users/ociuz/PROJECTS/admin-Panel/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:14:13-47
+70            <meta-data
+70-->[:image_picker_android] /Users/ociuz/PROJECTS/admin-Panel/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:15:13-17:75
+71                android:name="android.support.FILE_PROVIDER_PATHS"
+71-->[:image_picker_android] /Users/ociuz/PROJECTS/admin-Panel/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:16:17-67
+72                android:resource="@xml/flutter_image_picker_file_paths" />
+72-->[:image_picker_android] /Users/ociuz/PROJECTS/admin-Panel/build/image_picker_android/intermediates/merged_manifest/debug/AndroidManifest.xml:17:17-72
+73        </provider>
+74
+75        <uses-library
+75-->[androidx.window:window:1.0.0-beta04] /Users/ociuz/.gradle/caches/transforms-3/fa97b35e32acf90ee4ed643651f0a2d3/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:25:9-27:40
+76            android:name="androidx.window.extensions"
+76-->[androidx.window:window:1.0.0-beta04] /Users/ociuz/.gradle/caches/transforms-3/fa97b35e32acf90ee4ed643651f0a2d3/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:26:13-54
+77            android:required="false" />
+77-->[androidx.window:window:1.0.0-beta04] /Users/ociuz/.gradle/caches/transforms-3/fa97b35e32acf90ee4ed643651f0a2d3/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:27:13-37
+78        <uses-library
+78-->[androidx.window:window:1.0.0-beta04] /Users/ociuz/.gradle/caches/transforms-3/fa97b35e32acf90ee4ed643651f0a2d3/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:28:9-30:40
+79            android:name="androidx.window.sidecar"
+79-->[androidx.window:window:1.0.0-beta04] /Users/ociuz/.gradle/caches/transforms-3/fa97b35e32acf90ee4ed643651f0a2d3/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:29:13-51
+80            android:required="false" />
+80-->[androidx.window:window:1.0.0-beta04] /Users/ociuz/.gradle/caches/transforms-3/fa97b35e32acf90ee4ed643651f0a2d3/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:30:13-37
+81    </application>
+82
+83</manifest>

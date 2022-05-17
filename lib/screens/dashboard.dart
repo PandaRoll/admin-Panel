@@ -78,7 +78,7 @@ List<DashBoardItem> invoiceCount = [
 int touchedIndex = -1;
 
 List<PieChartSectionData> showingSections(List<Category>? category) {
-  return List.generate(category!.length, (i) {
+  return List.generate(5, (i) {
     final isTouched = i == touchedIndex;
     double fontSizes = isTouched
         ? SizeConfig.textMultiplier * 3

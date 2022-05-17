@@ -28,7 +28,7 @@ class Header extends StatelessWidget {
         if (!Responsive.isMobile(context))
           Spacer(flex: Responsive.isDesktop(context) ? 2 : 1),
         Expanded(child: SearchField()),
-        ProfileCard()
+        // ProfileCard()
       ],
     );
   }
@@ -42,7 +42,6 @@ class ProfileCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(left: defaultPadding),
       padding: EdgeInsets.symmetric(
         horizontal: defaultPadding,
         vertical: defaultPadding / 2,
@@ -54,17 +53,10 @@ class ProfileCard extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Image.asset(
-            "assets/images/profile_pic.png",
-            height: 38,
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: defaultPadding / 2),
+            child: Text("Albert Shaju"),
           ),
-          if (!Responsive.isMobile(context))
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: defaultPadding / 2),
-              child: Text("Angelina Jolie"),
-            ),
-          Icon(Icons.keyboard_arrow_down),
         ],
       ),
     );

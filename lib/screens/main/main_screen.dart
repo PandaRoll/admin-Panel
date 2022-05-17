@@ -9,11 +9,11 @@ import 'components/side_menu.dart';
 class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: context.read<MenuController>().scaffoldKey,
-      drawer: SideMenu(),
-      body: SafeArea(
-        child: Row(
+    return SafeArea(
+      child: Scaffold(
+        key: context.read<MenuController>().scaffoldKey,
+        drawer: SideMenu(),
+        body: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // We want this side menu only for large screen

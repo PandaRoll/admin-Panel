@@ -22,18 +22,6 @@ class MyFiles extends StatelessWidget {
               "My Files",
               style: Theme.of(context).textTheme.subtitle1,
             ),
-            ElevatedButton.icon(
-              style: TextButton.styleFrom(
-                padding: EdgeInsets.symmetric(
-                  horizontal: defaultPadding * 1.5,
-                  vertical:
-                      defaultPadding / (Responsive.isMobile(context) ? 2 : 1),
-                ),
-              ),
-              onPressed: () {},
-              icon: Icon(Icons.add),
-              label: Text("Add New"),
-            ),
           ],
         ),
         SizedBox(height: defaultPadding),
@@ -42,7 +30,7 @@ class MyFiles extends StatelessWidget {
             crossAxisCount: SizeConfig.screenwidth < 650 ? 2 : 4,
             childAspectRatio:
                 SizeConfig.screenwidth < 650 && SizeConfig.screenwidth > 350
-                    ? 1.3
+                    ? 1.2
                     : 1,
           ),
           tablet: FileInfoCardGridView(),
