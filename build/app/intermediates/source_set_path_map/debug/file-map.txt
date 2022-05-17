@@ -1,0 +1,13 @@
+com.example.admin.app-jetified-window-java-1.0.0-beta04-0 /Users/ociuz/.gradle/caches/transforms-3/76e274108bb11c4a21aa28ce809384d3/transformed/jetified-window-java-1.0.0-beta04/res
+com.example.admin.app-core-1.6.0-1 /Users/ociuz/.gradle/caches/transforms-3/b616cb6807ebc15b3b360954647323e5/transformed/core-1.6.0/res
+com.example.admin.app-jetified-annotation-experimental-1.1.0-2 /Users/ociuz/.gradle/caches/transforms-3/c8a0269e7de33e31b87acb317fd79715/transformed/jetified-annotation-experimental-1.1.0/res
+com.example.admin.app-jetified-window-1.0.0-beta04-3 /Users/ociuz/.gradle/caches/transforms-3/fa97b35e32acf90ee4ed643651f0a2d3/transformed/jetified-window-1.0.0-beta04/res
+com.example.admin.app-debug-4 /Users/ociuz/PROJECTS/Flutter-Responsive-Admin-Panel-or-Dashboard/android/app/src/debug/res
+com.example.admin.app-main-5 /Users/ociuz/PROJECTS/Flutter-Responsive-Admin-Panel-or-Dashboard/android/app/src/main/res
+com.example.admin.app-pngs-6 /Users/ociuz/PROJECTS/Flutter-Responsive-Admin-Panel-or-Dashboard/build/app/generated/res/pngs/debug
+com.example.admin.app-resValues-7 /Users/ociuz/PROJECTS/Flutter-Responsive-Admin-Panel-or-Dashboard/build/app/generated/res/resValues/debug
+com.example.admin.app-rs-8 /Users/ociuz/PROJECTS/Flutter-Responsive-Admin-Panel-or-Dashboard/build/app/generated/res/rs/debug
+com.example.admin.app-mergeDebugResources-9 /Users/ociuz/PROJECTS/Flutter-Responsive-Admin-Panel-or-Dashboard/build/app/intermediates/incremental/debug/mergeDebugResources/merged.dir
+com.example.admin.app-mergeDebugResources-10 /Users/ociuz/PROJECTS/Flutter-Responsive-Admin-Panel-or-Dashboard/build/app/intermediates/incremental/debug/mergeDebugResources/stripped.dir
+com.example.admin.app-merged_res-11 /Users/ociuz/PROJECTS/Flutter-Responsive-Admin-Panel-or-Dashboard/build/app/intermediates/merged_res/debug
+com.example.admin.app-packaged_res-12 /Users/ociuz/PROJECTS/Flutter-Responsive-Admin-Panel-or-Dashboard/build/path_provider_android/intermediates/packaged_res/debug
