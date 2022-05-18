@@ -160,7 +160,7 @@ class SidebarItem extends StatelessWidget {
     List<Widget> children = [];
     for (int i = 0; i < root['children'].length; i++) {
       Map<String, dynamic> item = root['children'][i];
-      final itemIndices = [..._indices, i];
+      List<int> itemIndices = [..._indices, i];
       children.add(
         SidebarItem(
           item,
