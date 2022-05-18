@@ -26,6 +26,7 @@ class SideMenu extends StatelessWidget {
               ],
             },
           ],
+          'link': "",
         },
         {
           'title': 'Chapter B',
