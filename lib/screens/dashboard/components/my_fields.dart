@@ -1,10 +1,43 @@
 import 'package:admin/models/MyFiles.dart';
 import 'package:admin/responsive.dart';
+import 'package:admin/screens/json_to_form/form_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
 import '../../config/size_config.dart';
 import 'file_info_card.dart';
+
+class FileInfoCardGridView extends StatelessWidget {
+  final int crossAxisCount;
+
+  final double childAspectRatio;
+  const FileInfoCardGridView({
+    Key? key,
+    this.crossAxisCount = 4,
+    this.childAspectRatio = 1,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GridView.builder(
+      physics: NeverScrollableScrollPhysics(),
+      shrinkWrap: true,
+      itemCount: demoMyFiles.length,
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: crossAxisCount,
+        crossAxisSpacing: defaultPadding,
+        mainAxisSpacing: defaultPadding,
+        childAspectRatio: childAspectRatio,
+      ),
+      itemBuilder: (context, index) => InkWell(
+          onTap: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => FormPage()));
+          },
+          child: FileInfoCard(info: demoMyFiles[index])),
+    );
+  }
+}
 
 class MyFiles extends StatelessWidget {
   const MyFiles({
@@ -39,33 +72,6 @@ class MyFiles extends StatelessWidget {
           ),
         ),
       ],
-    );
-  }
-}
-
-class FileInfoCardGridView extends StatelessWidget {
-  const FileInfoCardGridView({
-    Key? key,
-    this.crossAxisCount = 4,
-    this.childAspectRatio = 1,
-  }) : super(key: key);
-
-  final int crossAxisCount;
-  final double childAspectRatio;
-
-  @override
-  Widget build(BuildContext context) {
-    return GridView.builder(
-      physics: NeverScrollableScrollPhysics(),
-      shrinkWrap: true,
-      itemCount: demoMyFiles.length,
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: crossAxisCount,
-        crossAxisSpacing: defaultPadding,
-        mainAxisSpacing: defaultPadding,
-        childAspectRatio: childAspectRatio,
-      ),
-      itemBuilder: (context, index) => FileInfoCard(info: demoMyFiles[index]),
     );
   }
 }

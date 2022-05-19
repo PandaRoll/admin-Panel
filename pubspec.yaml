@@ -43,6 +43,8 @@ dependencies:
   number_paginator: ^0.0.2
   syncfusion_flutter_datagrid: 20.1.52
   collection: ^1.15.0
+  sizer: ^2.0.15
+  toggle_switch: ^2.0.1
   
 dev_dependencies:
   flutter_test:
