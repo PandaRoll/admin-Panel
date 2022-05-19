@@ -1,11 +1,11 @@
 import 'package:admin/constants.dart';
 import 'package:admin/controllers/MenuController.dart';
-import 'package:admin/screens/main/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import 'screens/config/size_config.dart';
+import 'screens/dashboard/components/form.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -37,7 +37,9 @@ class MyApp extends StatelessWidget {
                     create: (context) => MenuController(),
                   ),
                 ],
-                child: MainScreen(),
+                child: AllFieldsV1(
+                  title: 'Form',
+                ),
               ),
             );
           },
