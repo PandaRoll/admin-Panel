@@ -2,6 +2,38 @@ import 'package:admin/screens/main/components/sidebar_package.dart/sidebar_drawe
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../dashboard/components/form.dart';
+
+class DrawerListTile extends StatelessWidget {
+  final String title, svgSrc;
+
+  final VoidCallback press;
+  const DrawerListTile({
+    Key? key,
+    // For selecting those three line once press "Command+D"
+    required this.title,
+    required this.svgSrc,
+    required this.press,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      onTap: press,
+      horizontalTitleGap: 0.0,
+      leading: SvgPicture.asset(
+        svgSrc,
+        color: Colors.white54,
+        height: 16,
+      ),
+      title: Text(
+        title,
+        style: TextStyle(color: Colors.white54),
+      ),
+    );
+  }
+}
+
 class SideMenu extends StatelessWidget {
   const SideMenu({
     Key? key,
@@ -14,37 +46,26 @@ class SideMenu extends StatelessWidget {
         {
           'title': 'Chapter A',
           'children': [
-            {'title': 'Chapter A1'},
-            {'title': 'Chapter A2'},
-            {'title': 'Chapter A3'},
             {
-              'title': 'Chapter A4',
-              'children': [
-                {'title': 'Chapter A41'},
-                {'title': 'Chapter A42'},
-                {'title': 'Chapter A43'},
-              ],
+              'title': 'Chapter A1',
+              'icon': "https://cdn-icons-png.flaticon.com/512/4549/4549880.png",
+              'navigation': "form",
             },
           ],
-          'link': "",
+          'icon': "https://cdn-icons-png.flaticon.com/512/4549/4549818.png",
+          'navigation': "form",
         },
-        {
-          'title': 'Chapter B',
-          'children': [
-            {'title': 'Chapter B1'},
-            {
-              'title': 'Chapter B2',
-              'children': [
-                {'title': 'Chapter B2a'},
-                {'title': 'Chapter B2b'},
-              ],
-            },
-          ],
-        },
-        {'title': 'Chapter C'},
       ],
       onTabChanged: (string) {
         print(string);
+        if (string == "form") {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (_) => AllFieldsV1(
+                        title: '',
+                      )));
+        }
       },
     );
 
@@ -97,35 +118,5 @@ class SideMenu extends StatelessWidget {
     //     ],
     //   ),
     // );
-  }
-}
-
-class DrawerListTile extends StatelessWidget {
-  const DrawerListTile({
-    Key? key,
-    // For selecting those three line once press "Command+D"
-    required this.title,
-    required this.svgSrc,
-    required this.press,
-  }) : super(key: key);
-
-  final String title, svgSrc;
-  final VoidCallback press;
-
-  @override
-  Widget build(BuildContext context) {
-    return ListTile(
-      onTap: press,
-      horizontalTitleGap: 0.0,
-      leading: SvgPicture.asset(
-        svgSrc,
-        color: Colors.white54,
-        height: 16,
-      ),
-      title: Text(
-        title,
-        style: TextStyle(color: Colors.white54),
-      ),
-    );
   }
 }

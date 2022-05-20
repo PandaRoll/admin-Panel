@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import '../functions.dart';
 
 class SimpleText extends StatefulWidget {
+  final dynamic item;
+  final Function onChange;
+  final int position;
+  final Map errorMessages;
+  final Map validations;
+  final InputDecoration decorations;
+  final Map keyboardTypes;
   SimpleText({
     Key? key,
     required this.item,
@@ -14,13 +20,6 @@ class SimpleText extends StatefulWidget {
     required this.decorations,
     this.keyboardTypes = const {},
   }) : super(key: key);
-  final dynamic item;
-  final Function onChange;
-  final int position;
-  final Map errorMessages;
-  final Map validations;
-  final InputDecoration decorations;
-  final Map keyboardTypes;
 
   @override
   _SimpleText createState() => new _SimpleText();
@@ -28,19 +27,6 @@ class SimpleText extends StatefulWidget {
 
 class _SimpleText extends State<SimpleText> {
   dynamic item;
-
-  String? isRequired(item, value) {
-    if (value.isEmpty) {
-      return widget.errorMessages[item['key']] ?? 'Please enter some text';
-    }
-    return null;
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    item = widget.item;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -110,5 +96,18 @@ class _SimpleText extends State<SimpleText> {
         ),
       ),
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    item = widget.item;
+  }
+
+  String? isRequired(item, value) {
+    if (value.isEmpty) {
+      return widget.errorMessages[item['key']] ?? 'Please enter some text';
+    }
+    return null;
   }
 }

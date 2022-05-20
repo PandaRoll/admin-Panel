@@ -6,6 +6,8 @@ import 'package:admin/screens/main/json_to_form/components/simple_text.dart';
 import 'package:flutter/material.dart';
 
 import '../../config/size_config.dart';
+import 'components/simple_date.dart';
+import 'components/simple_select.dart';
 
 class CoreForm extends StatefulWidget {
   final String form;
@@ -18,7 +20,10 @@ class CoreForm extends StatefulWidget {
   final OutlineInputBorder? disabledBorder;
   final OutlineInputBorder? focusedErrorBorder;
   final OutlineInputBorder? focusedBorder;
-
+  final Map errorMessages;
+  final Map validations;
+  final Map decorations;
+  final Map keyboardTypes;
   const CoreForm({
     required this.form,
     required this.onChanged,
@@ -30,6 +35,10 @@ class CoreForm extends StatefulWidget {
     this.focusedErrorBorder,
     this.focusedBorder,
     this.disabledBorder,
+    this.errorMessages = const {},
+    this.validations = const {},
+    this.decorations = const {},
+    this.keyboardTypes = const {},
   });
 
   @override
@@ -41,6 +50,19 @@ class _CoreFormState extends State<CoreForm> {
   final dynamic formItems;
 
   int radioValue = -1;
+
+  _CoreFormState(this.formItems);
+
+  @override
+  Widget build(BuildContext context) {
+    return new Container(
+      padding: widget.padding ?? EdgeInsets.all(8),
+      child: new Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: jsonToForm(),
+      ),
+    );
+  }
 
   List<Widget> jsonToForm() {
     List<Widget> listWidget = [];
@@ -57,54 +79,37 @@ class _CoreFormState extends State<CoreForm> {
               style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
             )));
         listWidget.add(SizedBox(
-                width: SizeConfig.widthMultiplier * 95,
-                height: SizeConfig.heightMultiplier * 15,
-                child: SimpleText(
-                  item: item,
-                  onChange: onChange,
-                  position: 0,
-                  decorations: InputDecoration(border: InputBorder.none),
-                ))
-// Card(
-//           elevation: 2,
-//           child: SizedBox(
-//             width: SizeConfig.widthMultiplier * 95,
-//             child: new TextFormField(
-//               controller: null,
-//               inputFormatters:
-//                   (item['validator'] != null && item['validator'] != '')
-//                       ? (item['validator'] == 'digitsOnly'
-//                           ? [FilteringTextInputFormatter.allow(RegExp('[0-9]'))]
-//                           : item['validator'] == 'textOnly'
-//                               ? [
-//                                   FilteringTextInputFormatter.allow(
-//                                       RegExp('[a-zA-Z]'))
-//                                 ]
-//                               : [])
-//                       : [],
-//               decoration: new InputDecoration(
-//                 labelText: widget.labelText,
-//                 enabledBorder: widget.enabledBorder ?? null,
-//                 errorBorder: widget.errorBorder ?? null,
-//                 focusedErrorBorder: widget.focusedErrorBorder ?? null,
-//                 focusedBorder: widget.focusedBorder ?? null,
-//                 disabledBorder: widget.disabledBorder ?? null,
-//                 hintText: item['placeholder'] ?? "",
-//               ),
-//               maxLines: item['type'] == "TareaText" ? 10 : 1,
-//               keyboardType: item['keyboardType'] != null
-//                   ? item['keyboardType'][item['key']]
-//                   : TextInputType.text,
-//               onChanged: (String value) {
-//                 item['response'] = value;
-//                 _handleChanged();
-//               },
-//               obscureText: item['type'] == "Password" ? true : false,
-//             ),
-//           ),
-//         ));
+            width: SizeConfig.widthMultiplier * 95,
+            height: SizeConfig.heightMultiplier * 15,
+            child: SimpleText(
+              item: item,
+              onChange: onChange,
+              position: 0,
+              decorations: InputDecoration(border: InputBorder.none),
+            )));
+      }
+      if (item['type'] == "Select") {
+        listWidget.add(new SimpleSelect(
+          item: item,
+          onChange: onChange,
+          position: formItems.indexOf(item),
+          decorations: widget.decorations,
+          errorMessages: widget.errorMessages,
+          validations: widget.validations,
+          keyboardTypes: widget.keyboardTypes,
+        ));
+      }
 
-            );
+      if (item['type'] == "Date") {
+        listWidget.add(new SimpleDate(
+          item: item,
+          onChange: onChange,
+          position: formItems.indexOf(item),
+          decorations: widget.decorations,
+          errorMessages: widget.errorMessages,
+          validations: widget.validations,
+          keyboardTypes: widget.keyboardTypes,
+        ));
       }
 
       if (item['type'] == "RadioButton") {
@@ -179,12 +184,6 @@ class _CoreFormState extends State<CoreForm> {
     return listWidget;
   }
 
-  _CoreFormState(this.formItems);
-
-  void _handleChanged() {
-    widget.onChanged(formItems);
-  }
-
   void onChange(int position, dynamic value) {
     this.setState(() {
       formItems[position]['value'] = value;
@@ -192,14 +191,7 @@ class _CoreFormState extends State<CoreForm> {
     });
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return new Container(
-      padding: widget.padding ?? EdgeInsets.all(8),
-      child: new Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: jsonToForm(),
-      ),
-    );
+  void _handleChanged() {
+    widget.onChanged(formItems);
   }
 }

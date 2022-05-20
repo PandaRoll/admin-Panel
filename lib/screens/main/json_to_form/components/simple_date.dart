@@ -1,10 +1,15 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import '../functions.dart';
 
 class SimpleDate extends StatefulWidget {
+  final dynamic item;
+  final Function onChange;
+  final int position;
+  final Map errorMessages;
+  final Map validations;
+  final Map decorations;
+  final Map keyboardTypes;
   SimpleDate({
     Key? key,
     required this.item,
@@ -15,13 +20,6 @@ class SimpleDate extends StatefulWidget {
     this.decorations = const {},
     this.keyboardTypes = const {},
   }) : super(key: key);
-  final dynamic item;
-  final Function onChange;
-  final int position;
-  final Map errorMessages;
-  final Map validations;
-  final Map decorations;
-  final Map keyboardTypes;
 
   @override
   _SimpleDate createState() => new _SimpleDate();
@@ -29,12 +27,6 @@ class SimpleDate extends StatefulWidget {
 
 class _SimpleDate extends State<SimpleDate> {
   dynamic item;
-
-  @override
-  void initState() {
-    super.initState();
-    item = widget.item;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,28 +49,39 @@ class _SimpleDate extends State<SimpleDate> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               InkWell(
-                  // onTap: () {
-                  //   selectDate();
-                  // },
-                  child: new TextFormField(
-                readOnly: true,
-                decoration: InputDecoration(
-                  //border: OutlineInputBorder(),
-                  hintText: item['value'] ?? "",
-                  //prefixIcon: Icon(Icons.date_range_rounded),
-                  suffixIcon: IconButton(
-                    onPressed: () {
-                      selectDate();
-                    },
-                    icon: Icon(Icons.calendar_today_rounded),
-                  ),
-                ),
-              )),
+                  onTap: () {
+                    selectDate();
+                  },
+                  child: Card(
+                    elevation: 2,
+                    child: Center(
+                      child: new TextFormField(
+                        readOnly: true,
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: item['value'] ?? "",
+                          //prefixIcon: Icon(Icons.date_range_rounded),
+                          suffixIcon: IconButton(
+                            onPressed: () {
+                              selectDate();
+                            },
+                            icon: Icon(Icons.calendar_today_rounded),
+                          ),
+                        ),
+                      ),
+                    ),
+                  )),
             ],
           )
         ],
       ),
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    item = widget.item;
   }
 
   Future selectDate() async {

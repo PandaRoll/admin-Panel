@@ -4,8 +4,6 @@ import 'package:admin/screens/main/json_to_form/json_to_form.dart';
 import 'package:flutter/material.dart';
 
 class AllFieldsV1 extends StatefulWidget {
-  AllFieldsV1({Key? key, required this.title}) : super(key: key);
-
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
   // how it looks.
@@ -16,6 +14,8 @@ class AllFieldsV1 extends StatefulWidget {
   // always marked "final".
 
   final String title;
+
+  AllFieldsV1({Key? key, required this.title}) : super(key: key);
 
   @override
   _AllFieldsV1 createState() => new _AllFieldsV1();
@@ -115,6 +115,32 @@ class _AllFieldsV1 extends State<AllFieldsV1> {
         {
           'title': "product 3",
           'value': false,
+        }
+      ]
+    },
+    {
+      'key': 'date',
+      'type': 'Date',
+      'label': 'date',
+      'required': true,
+    },
+    {
+      'key': 'select1',
+      'type': 'Select',
+      'label': 'Select test',
+      'value': 'product 1',
+      'items': [
+        {
+          'label': "product 1",
+          'value': "product 1",
+        },
+        {
+          'label': "product 2",
+          'value': "product 2",
+        },
+        {
+          'label': "product 3",
+          'value': "product 3",
         }
       ]
     },
