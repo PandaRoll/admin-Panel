@@ -6,6 +6,28 @@ import '../../../constants.dart';
 import '../../config/size_config.dart';
 import '../../dashboard.dart';
 
+List<PieChartSectionData> showingSections() {
+  return List.generate(5, (i) {
+    final isTouched = i == touchedIndex;
+    double fontSizes = isTouched
+        ? SizeConfig.textMultiplier * 3
+        : SizeConfig.textMultiplier * 2;
+    final radius = isTouched ? 60.0 : 50.0;
+
+    return PieChartSectionData(
+      color: colorList[i],
+      value: double.parse((5 * i).toString()),
+      title: (5 * i).toString() + "%",
+      radius: radius,
+      titleStyle: GoogleFonts.montserrat(
+        fontSize: fontSizes,
+        fontWeight: FontWeight.w500,
+        color: Colors.white,
+      ),
+    );
+  });
+}
+
 class DashboardPiechart extends StatefulWidget {
   const DashboardPiechart({
     Key? key,
@@ -51,8 +73,8 @@ class _DashboardPiechartState extends State<DashboardPiechart> {
                 SizedBox(height: defaultPadding),
                 Text(
                   "40",
-                  style: Theme.of(context).textTheme.headline4!.copyWith(
-                        color: Colors.white,
+                  style: Theme.of(context).textTheme.headline6!.copyWith(
+                        color: Colors.black,
                         fontWeight: FontWeight.w600,
                         height: 0.5,
                       ),
@@ -65,26 +87,4 @@ class _DashboardPiechartState extends State<DashboardPiechart> {
       ),
     );
   }
-}
-
-List<PieChartSectionData> showingSections() {
-  return List.generate(5, (i) {
-    final isTouched = i == touchedIndex;
-    double fontSizes = isTouched
-        ? SizeConfig.textMultiplier * 3
-        : SizeConfig.textMultiplier * 2;
-    final radius = isTouched ? 60.0 : 50.0;
-
-    return PieChartSectionData(
-      color: colorList[i],
-      value: 5,
-      title: '%',
-      radius: radius,
-      titleStyle: GoogleFonts.montserrat(
-        fontSize: fontSizes,
-        fontWeight: FontWeight.w500,
-        color: Colors.white,
-      ),
-    );
-  });
 }

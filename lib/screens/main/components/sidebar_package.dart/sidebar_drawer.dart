@@ -129,14 +129,22 @@ class _SidebarState extends State<Sidebar> with SingleTickerProviderStateMixin {
           Expanded(
             child: ListView.builder(
               itemBuilder: (BuildContext context, int index) => Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8),
-                child: SidebarItem(
-                  widget.tabs[index],
-                  widget.onTabChanged,
-                  activeTabIndices,
-                  setActiveTabIndices,
-                  index: index,
-                  indices: [],
+                padding: const EdgeInsets.symmetric(horizontal: 1),
+                child: Card(
+                  elevation: 1,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8)),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 4),
+                    child: SidebarItem(
+                      widget.tabs[index],
+                      widget.onTabChanged,
+                      activeTabIndices,
+                      setActiveTabIndices,
+                      index: index,
+                      indices: [],
+                    ),
+                  ),
                 ),
               ),
               itemCount: widget.tabs.length,

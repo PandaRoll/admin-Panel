@@ -49,28 +49,30 @@ class _SimpleDate extends State<SimpleDate> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               InkWell(
-                  onTap: () {
-                    selectDate();
-                  },
+                  // onTap: () {
+                  //   selectDate();
+                  // },
                   child: Card(
-                    elevation: 2,
-                    child: Center(
-                      child: new TextFormField(
-                        readOnly: true,
-                        decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: item['value'] ?? "",
-                          //prefixIcon: Icon(Icons.date_range_rounded),
-                          suffixIcon: IconButton(
-                            onPressed: () {
-                              selectDate();
-                            },
-                            icon: Icon(Icons.calendar_today_rounded),
-                          ),
-                        ),
+                elevation: 2,
+                child: Center(
+                  child: new TextFormField(
+                    readOnly: true,
+                    textAlignVertical: TextAlignVertical.center,
+                    decoration: InputDecoration(
+                      contentPadding: EdgeInsets.symmetric(horizontal: 8),
+                      border: InputBorder.none, isCollapsed: true,
+                      hintText: item['value'] ?? "",
+                      //prefixIcon: Icon(Icons.date_range_rounded),
+                      suffixIcon: IconButton(
+                        onPressed: () {
+                          selectDate();
+                        },
+                        icon: Icon(Icons.calendar_today_rounded),
                       ),
                     ),
-                  )),
+                  ),
+                ),
+              )),
             ],
           )
         ],

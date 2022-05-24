@@ -43,7 +43,9 @@ dependencies:
   number_paginator: ^0.0.2
   syncfusion_flutter_datagrid: 20.1.52
   collection: ^1.15.0
-  
+  syncfusion_flutter_datagrid_export: any
+  flutter_bloc: ^8.0.1
+  window_manager: ^0.2.3
 dev_dependencies:
   flutter_test:
     sdk: flutter

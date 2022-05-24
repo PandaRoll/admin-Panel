@@ -49,7 +49,8 @@ class _SimpleText extends State<SimpleText> {
             new TextFormField(
               controller: null,
               initialValue: item['value'] ?? null,
-              decoration: widget.decorations,
+              decoration:
+                  InputDecoration(isCollapsed: true, border: InputBorder.none),
               //  item['decoration'] ??
               //     widget.decorations[item['key']] ??
               //     new InputDecoration(

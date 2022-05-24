@@ -48,16 +48,7 @@ class _AllFieldsV1 extends State<AllFieldsV1> {
       'placeholder': "Hi Group flutter",
       'validator': 'digitsOnly'
     },
-    {
-      'type': 'Password',
-      'title': 'Password',
-    },
     {'type': 'Email', 'title': 'Email test', 'placeholder': "hola a todos"},
-    {
-      'type': 'TareaText',
-      'title': 'TareaText test',
-      'placeholder': "hola a todos"
-    },
     {
       'type': 'RadioButton',
       'title': 'Radio Button tests',
@@ -78,8 +69,13 @@ class _AllFieldsV1 extends State<AllFieldsV1> {
       ]
     },
     {
+      'type': 'TareaText',
+      'title': 'TareaText test',
+      'placeholder': "hola a todos"
+    },
+    {
       'type': 'Switch',
-      'title': 'Switch test',
+      'title': 'Online',
       'switchValue': false,
     },
     {
@@ -184,7 +180,8 @@ class _AllFieldsV1 extends State<AllFieldsV1> {
                 child: new Text('Send'),
                 onPressed: () {
                   print(this.response.toString());
-                })
+                  
+                }),
           ]),
         ),
       ),

@@ -1,4 +1,5 @@
-import 'package:collection/collection.dart';
+import 'dart:math';
+
 import 'package:flutter/widgets.dart';
 
 class SizeConfig {
@@ -9,6 +10,11 @@ class SizeConfig {
   static double screenwidth = 0;
   static double screenheight = 0;
   static double textMultiplier = 0;
+  static double vw = 0;
+  static double vh = 0;
+  static double vmin = 0;
+  static double vmax = 0;
+
   static double imageSizeMultiplier = 0;
   static double heightMultiplier = 0;
   static double widthMultiplier = 0;
@@ -31,10 +37,16 @@ class SizeConfig {
     _blockHeight = _screenHeight / 100;
     screenwidth = _screenWidth;
     screenheight = _screenHeight;
-    textMultiplier = [
-      _blockWidth + 1,
-      _blockHeight + 1,
-    ].average;
+    vw = _blockWidth;
+    vh = _blockHeight;
+    vmin = [
+      _blockWidth,
+      _blockHeight,
+    ].reduce(min);
+    vmax = [
+      _blockWidth,
+      _blockHeight,
+    ].reduce(max);
     imageSizeMultiplier = _blockWidth;
     heightMultiplier = _blockHeight;
     widthMultiplier = _blockWidth;

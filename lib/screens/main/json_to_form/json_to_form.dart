@@ -80,7 +80,7 @@ class _CoreFormState extends State<CoreForm> {
             )));
         listWidget.add(SizedBox(
             width: SizeConfig.widthMultiplier * 95,
-            height: SizeConfig.heightMultiplier * 15,
+            height: SizeConfig.widthMultiplier * 15,
             child: SimpleText(
               item: item,
               onChange: onChange,

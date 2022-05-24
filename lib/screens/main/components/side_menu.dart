@@ -1,8 +1,10 @@
+import 'package:admin/bloc/drawer_bloc/drawer_bloc_bloc.dart';
 import 'package:admin/screens/main/components/sidebar_package.dart/sidebar_drawer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../dashboard/components/form.dart';
+import '../../../responsive.dart';
 
 class DrawerListTile extends StatelessWidget {
   final String title, svgSrc;
@@ -44,12 +46,32 @@ class SideMenu extends StatelessWidget {
     return Sidebar.fromJson(
       tabs: [
         {
-          'title': 'Chapter A',
+          'title': 'Cycle',
           'children': [
             {
-              'title': 'Chapter A1',
+              'title': 'Brand',
               'icon': "https://cdn-icons-png.flaticon.com/512/4549/4549880.png",
               'navigation': "form",
+            },
+          ],
+          'icon': "https://cdn-icons-png.flaticon.com/512/4549/4549818.png",
+          'navigation': "form",
+        },
+        {
+          'title': 'Cycle',
+          'children': [
+            {
+              'title': 'Brand',
+              'icon': "https://cdn-icons-png.flaticon.com/512/4549/4549880.png",
+              'navigation': "form",
+              'children': [
+                {
+                  'title': 'Brand',
+                  'icon':
+                      "https://cdn-icons-png.flaticon.com/512/4549/4549880.png",
+                  'navigation': "form",
+                },
+              ],
             },
           ],
           'icon': "https://cdn-icons-png.flaticon.com/512/4549/4549818.png",
@@ -58,13 +80,11 @@ class SideMenu extends StatelessWidget {
       ],
       onTabChanged: (string) {
         print(string);
-        if (string == "form") {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (_) => AllFieldsV1(
-                        title: '',
-                      )));
+
+        final drawerBloc = BlocProvider.of<DrawerBloc>(context);
+        drawerBloc.add(NavigateTo(string));
+        if (Responsive.isMobile(context)) {
+          Navigator.pop(context);
         }
       },
     );
