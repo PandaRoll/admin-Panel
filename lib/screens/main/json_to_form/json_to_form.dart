@@ -2,12 +2,12 @@ library json_to_form;
 
 import 'dart:convert';
 
-import 'package:admin/screens/main/json_to_form/components/simple_text.dart';
+import 'package:admin/screens/main/json_to_form/components/json_textfields.dart';
 import 'package:flutter/material.dart';
 
 import '../../config/size_config.dart';
-import 'components/simple_date.dart';
-import 'components/simple_select.dart';
+import 'components/json_date.dart';
+import 'components/json_dropdown.dart';
 
 class CoreForm extends StatefulWidget {
   final String form;
@@ -81,7 +81,7 @@ class _CoreFormState extends State<CoreForm> {
         listWidget.add(SizedBox(
             width: SizeConfig.widthMultiplier * 95,
             height: SizeConfig.widthMultiplier * 15,
-            child: SimpleText(
+            child: JsonTextField(
               item: item,
               onChange: onChange,
               position: 0,
@@ -89,7 +89,7 @@ class _CoreFormState extends State<CoreForm> {
             )));
       }
       if (item['type'] == "Select") {
-        listWidget.add(new SimpleSelect(
+        listWidget.add(new JsonDropDown(
           item: item,
           onChange: onChange,
           position: formItems.indexOf(item),
@@ -101,7 +101,7 @@ class _CoreFormState extends State<CoreForm> {
       }
 
       if (item['type'] == "Date") {
-        listWidget.add(new SimpleDate(
+        listWidget.add(new JsonDate(
           item: item,
           onChange: onChange,
           position: formItems.indexOf(item),
@@ -144,7 +144,7 @@ class _CoreFormState extends State<CoreForm> {
         listWidget.add(
           new Row(children: <Widget>[
             new Expanded(child: new Text(item['title'])),
-            new Switch(
+            new Switch( 
                 value: item['switchValue'],
                 onChanged: (bool value) {
                   this.setState(() {

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../functions.dart';
 
-class SimpleSelect extends StatefulWidget {
+class JsonDropDown extends StatefulWidget {
   final dynamic item;
   final Function onChange;
   final int position;
@@ -10,7 +10,7 @@ class SimpleSelect extends StatefulWidget {
   final Map validations;
   final Map decorations;
   final Map keyboardTypes;
-  SimpleSelect({
+  JsonDropDown({
     Key? key,
     required this.item,
     required this.onChange,
@@ -22,10 +22,10 @@ class SimpleSelect extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _SimpleSelect createState() => new _SimpleSelect();
+  _JsonDropDown createState() => new _JsonDropDown();
 }
 
-class _SimpleSelect extends State<SimpleSelect> {
+class _JsonDropDown extends State<JsonDropDown> {
   dynamic item;
 
   @override

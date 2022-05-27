@@ -1,3 +1,44 @@
+import 'package:data_table_2/data_table_2.dart';
+import 'package:flutter/material.dart';
+
+import '../../../constants.dart';
+import '../../../models/RecentFile.dart';
+import '../../../responsive.dart';
+import '../../dashboard/components/recent_files.dart';
+
+Widget cardList(BuildContext context, List<dynamic> data) {
+  if (Responsive.isMobile(context)) {
+    return ListView.builder(
+        itemCount: demoRecentFiles.length,
+        itemBuilder: (context, index) {
+          return Column();
+        });
+  } else {
+    return SizedBox(
+      width: double.infinity,
+      child: DataTable2(
+        columnSpacing: defaultPadding,
+        minWidth: 600,
+        columns: [
+          DataColumn(
+            label: Text("File Name"),
+          ),
+          DataColumn(
+            label: Text("Date"),
+          ),
+          DataColumn(
+            label: Text("Size"),
+          ),
+        ],
+        rows: List.generate(
+          demoRecentFiles.length,
+          (index) => recentFileDataRow(demoRecentFiles[index]),
+        ),
+      ),
+    );
+  }
+}
+
 class Fun {
   static bool labelHidden(item) {
     if (item.containsKey('hiddenLabel')) {

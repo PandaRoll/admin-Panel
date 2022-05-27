@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class SimpleSwitch extends StatefulWidget {
+class JsonToggle extends StatefulWidget {
   final dynamic item;
   final Function onChange;
   final int position;
@@ -8,7 +8,7 @@ class SimpleSwitch extends StatefulWidget {
   final Map validations;
   final Map decorations;
   final Map keyboardTypes;
-  SimpleSwitch({
+  JsonToggle({
     Key? key,
     required this.item,
     required this.onChange,
@@ -20,10 +20,10 @@ class SimpleSwitch extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _SimpleSwitch createState() => new _SimpleSwitch();
+  _JsonToggle createState() => new _JsonToggle();
 }
 
-class _SimpleSwitch extends State<SimpleSwitch> {
+class _JsonToggle extends State<JsonToggle> {
   dynamic item;
 
   @override

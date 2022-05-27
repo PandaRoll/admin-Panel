@@ -68,7 +68,7 @@
 //           item['type'] == "Email" ||
 //           item['type'] == "TextArea" ||
 //           item['type'] == "TextInput") {
-//         listWidget.add(new SimpleText(
+//         listWidget.add(new JsonTextField(
 //           item: item,
 //           onChange: onChange,
 //           position: count,
@@ -80,7 +80,7 @@
 //       }
 
 //       if (item['type'] == "RadioButton") {
-//         listWidget.add(new SimpleRadios(
+//         listWidget.add(new JsonRadios(
 //           item: item,
 //           onChange: onChange,
 //           position: count,
@@ -92,7 +92,7 @@
 //       }
 
 //       if (item['type'] == "Switch") {
-//         listWidget.add(new SimpleSwitch(
+//         listWidget.add(new JsonToggle(
 //           item: item,
 //           onChange: onChange,
 //           position: count,
@@ -104,7 +104,7 @@
 //       }
 
 //       if (item['type'] == "Checkbox") {
-//         listWidget.add(new SimpleListCheckbox(
+//         listWidget.add(new JsonCheckBox(
 //           item: item,
 //           onChange: onChange,
 //           position: count,
@@ -116,7 +116,7 @@
 //       }
 
 //       if (item['type'] == "Select") {
-//         listWidget.add(new SimpleSelect(
+//         listWidget.add(new JsonDropDown(
 //           item: item,
 //           onChange: onChange,
 //           position: count,
@@ -128,7 +128,7 @@
 //       }
 
 //       if (item['type'] == "Date") {
-//         listWidget.add(new SimpleDate(
+//         listWidget.add(new JsonDate(
 //           item: item,
 //           onChange: onChange,
 //           position: count,

@@ -1,4 +1,4 @@
-import 'package:admin/bloc/drawer_bloc/drawer_bloc_bloc.dart';
+import 'package:admin/bloc/drawer_bloc/drawer_bloc.dart';
 import 'package:admin/screens/main/components/sidebar_package.dart/sidebar_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -63,13 +63,13 @@ class SideMenu extends StatelessWidget {
             {
               'title': 'Brand',
               'icon': "https://cdn-icons-png.flaticon.com/512/4549/4549880.png",
-              'navigation': "form",
+              'navigation': "Grid",
               'children': [
                 {
                   'title': 'Brand',
                   'icon':
                       "https://cdn-icons-png.flaticon.com/512/4549/4549880.png",
-                  'navigation': "form",
+                  'navigation': "Grid",
                 },
               ],
             },

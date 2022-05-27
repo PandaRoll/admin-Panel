@@ -2,8 +2,15 @@ import 'package:flutter/material.dart';
 
 import '../functions.dart';
 
-class SimpleListCheckbox extends StatefulWidget {
-  SimpleListCheckbox({
+class JsonCheckBox extends StatefulWidget {
+  final dynamic item;
+  final Function onChange;
+  final int position;
+  final Map errorMessages;
+  final Map validations;
+  final Map decorations;
+  final Map keyboardTypes;
+  JsonCheckBox({
     Key? key,
     required this.item,
     required this.onChange,
@@ -13,39 +20,14 @@ class SimpleListCheckbox extends StatefulWidget {
     this.decorations = const {},
     this.keyboardTypes = const {},
   }) : super(key: key);
-  final dynamic item;
-  final Function onChange;
-  final int position;
-  final Map errorMessages;
-  final Map validations;
-  final Map decorations;
-  final Map keyboardTypes;
 
   @override
-  _SimpleListCheckbox createState() => new _SimpleListCheckbox();
+  _JsonCheckBox createState() => new _JsonCheckBox();
 }
 
-class _SimpleListCheckbox extends State<SimpleListCheckbox> {
+class _JsonCheckBox extends State<JsonCheckBox> {
   dynamic item;
   List<dynamic> selectItems = [];
-
-  String? isRequired(item, value) {
-    if (value.isEmpty) {
-      return widget.errorMessages[item['key']] ?? 'Please enter some text';
-    }
-    return null;
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    item = widget.item;
-    for (var i = 0; i < item['items'].length; i++) {
-      if (item['items'][i]['value'] == true) {
-        selectItems.add(i);
-      }
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -87,5 +69,23 @@ class _SimpleListCheckbox extends State<SimpleListCheckbox> {
         children: checkboxes,
       ),
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    item = widget.item;
+    for (var i = 0; i < item['items'].length; i++) {
+      if (item['items'][i]['value'] == true) {
+        selectItems.add(i);
+      }
+    }
+  }
+
+  String? isRequired(item, value) {
+    if (value.isEmpty) {
+      return widget.errorMessages[item['key']] ?? 'Please enter some text';
+    }
+    return null;
   }
 }

@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
+
 import '../functions.dart';
 
-class SimpleRadios extends StatefulWidget {
-  SimpleRadios({
+class JsonRadios extends StatefulWidget {
+  final dynamic item;
+  final Function onChange;
+  final int position;
+  final Map errorMessages;
+  final Map validations;
+  final Map decorations;
+  final Map keyboardTypes;
+  JsonRadios({
     Key? key,
     required this.item,
     required this.onChange,
@@ -12,34 +20,14 @@ class SimpleRadios extends StatefulWidget {
     this.decorations = const {},
     this.keyboardTypes = const {},
   }) : super(key: key);
-  final dynamic item;
-  final Function onChange;
-  final int position;
-  final Map errorMessages;
-  final Map validations;
-  final Map decorations;
-  final Map keyboardTypes;
 
   @override
-  _SimpleRadios createState() => new _SimpleRadios();
+  _JsonRadios createState() => new _JsonRadios();
 }
 
-class _SimpleRadios extends State<SimpleRadios> {
+class _JsonRadios extends State<JsonRadios> {
   dynamic item;
   late int radioValue;
-
-  String? isRequired(item, value) {
-    if (value.isEmpty) {
-      return widget.errorMessages[item['key']] ?? 'Please enter some text';
-    }
-    return null;
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    item = widget.item;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -76,5 +64,18 @@ class _SimpleRadios extends State<SimpleRadios> {
         children: radios,
       ),
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    item = widget.item;
+  }
+
+  String? isRequired(item, value) {
+    if (value.isEmpty) {
+      return widget.errorMessages[item['key']] ?? 'Please enter some text';
+    }
+    return null;
   }
 }

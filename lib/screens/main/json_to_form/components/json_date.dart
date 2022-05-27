@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../functions.dart';
 
-class SimpleDate extends StatefulWidget {
+class JsonDate extends StatefulWidget {
   final dynamic item;
   final Function onChange;
   final int position;
@@ -10,7 +10,7 @@ class SimpleDate extends StatefulWidget {
   final Map validations;
   final Map decorations;
   final Map keyboardTypes;
-  SimpleDate({
+  JsonDate({
     Key? key,
     required this.item,
     required this.onChange,
@@ -22,10 +22,10 @@ class SimpleDate extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _SimpleDate createState() => new _SimpleDate();
+  _JsonDate createState() => new _JsonDate();
 }
 
-class _SimpleDate extends State<SimpleDate> {
+class _JsonDate extends State<JsonDate> {
   dynamic item;
 
   @override

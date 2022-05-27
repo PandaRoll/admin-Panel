@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../functions.dart';
 
-class SimpleText extends StatefulWidget {
+class JsonTextField extends StatefulWidget {
   final dynamic item;
   final Function onChange;
   final int position;
@@ -10,7 +10,7 @@ class SimpleText extends StatefulWidget {
   final Map validations;
   final InputDecoration decorations;
   final Map keyboardTypes;
-  SimpleText({
+  JsonTextField({
     Key? key,
     required this.item,
     required this.onChange,
@@ -22,10 +22,10 @@ class SimpleText extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _SimpleText createState() => new _SimpleText();
+  _JsonTextField createState() => new _JsonTextField();
 }
 
-class _SimpleText extends State<SimpleText> {
+class _JsonTextField extends State<JsonTextField> {
   dynamic item;
 
   @override
