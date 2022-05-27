@@ -2,8 +2,6 @@ import 'dart:async';
 
 import 'package:admin/screens/json_to_form/themes/inherited_json_form_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-
 
 import '../json_to_form_with_theme.dart';
 import 'line_wrapper.dart';
@@ -11,6 +9,19 @@ import 'name_description_widget.dart';
 
 /// This is the stateful widget that the main application instantiates.
 class DropDownWidget extends StatefulWidget {
+  Function(int) onTimeUpdated;
+
+  final Function getUpdatedTime;
+  final Function getUpdatedValue;
+  final String name;
+  final String? description;
+  final String id;
+  final List<String> values;
+  String? chosenValue;
+  final OnValueChanged? onValueChanged;
+  final bool isBeforeHeader;
+  final Widget Function(int date, String id)? dateBuilder;
+  int? time;
   DropDownWidget(
       {Key? key,
       required this.name,
@@ -27,19 +38,6 @@ class DropDownWidget extends StatefulWidget {
       required this.isBeforeHeader})
       : super(key: key);
 
-  Function(int) onTimeUpdated;
-  final Function getUpdatedTime;
-  final Function getUpdatedValue;
-  final String name;
-  final String? description;
-  final String id;
-  final List<String> values;
-  String? chosenValue;
-  final OnValueChanged? onValueChanged;
-  final bool isBeforeHeader;
-  final Widget Function(int date, String id)? dateBuilder;
-  int? time;
-
   @override
   State<DropDownWidget> createState() => _MyStatefulWidgetState();
 }
@@ -51,37 +49,6 @@ class _MyStatefulWidgetState extends State<DropDownWidget> {
 
   late final StreamSubscription<String?>? _valueChange;
   bool forceRefresh = false;
-
-  @override
-  void didUpdateWidget(covariant DropDownWidget oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    forceRefresh = true;
-  }
-
-  @override
-  void didChangeDependencies() {
-    UpdateStreamWidget.of(context)!
-        .dataClassStream
-        .listen(_onRemoteValueChanged);
-    super.didChangeDependencies();
-  }
-
-  @override
-  void initState() {
-    dropdownValue = widget.getUpdatedValue();
-    thisTime.value = widget.getUpdatedTime();
-    super.initState();
-  }
-
-  void _onRemoteValueChanged(DataClass dataClass) {
-    if (dataClass.id == widget.id && mounted) {
-      setState(() {
-        dropdownValue = dataClass.value;
-      });
-      thisTime.value = widget.getUpdatedTime();
-    }
-  }
-
 
   @override
   Widget build(BuildContext context) {
@@ -167,6 +134,28 @@ class _MyStatefulWidgetState extends State<DropDownWidget> {
     );
   }
 
+  @override
+  void didChangeDependencies() {
+    UpdateStreamWidget.of(context)!
+        .dataClassStream
+        .listen(_onRemoteValueChanged);
+    super.didChangeDependencies();
+  }
+
+  @override
+  void didUpdateWidget(covariant DropDownWidget oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    forceRefresh = true;
+  }
+
+  @override
+  void initState() {
+    dropdownValue = widget.getUpdatedValue();
+    thisTime.value = widget.getUpdatedTime();
+    super.initState();
+  }
+
+
   onChanged(String? newValue) async {
     if (mounted) {
       setState(() {
@@ -180,6 +169,15 @@ class _MyStatefulWidgetState extends State<DropDownWidget> {
     if (res) {
       thisTime.value = DateTime.now().millisecondsSinceEpoch;
       widget.onTimeUpdated(thisTime.value!);
+    }
+  }
+
+  void _onRemoteValueChanged(DataClass dataClass) {
+    if (dataClass.id == widget.id && mounted) {
+      setState(() {
+        dropdownValue = dataClass.value;
+      });
+      thisTime.value = widget.getUpdatedTime();
     }
   }
 }

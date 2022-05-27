@@ -48,9 +48,17 @@ List<Color> colorList = [
   AppTheme.colors.dashBoardGradientC7,
   AppTheme.colors.dashBoardGradientC8,
   AppTheme.colors.dashBoardGradientC9,
-  AppTheme.colors.dashBoardGradientC10,
   AppTheme.colors.dashBoardGradientC11,
   AppTheme.colors.dashBoardGradientC12,
+  AppTheme.colors.dashBoardGradientC13,
+  AppTheme.colors.dashBoardGradientC14,
+  AppTheme.colors.dashBoardGradientC15,
+  AppTheme.colors.dashBoardGradientC16,
+  AppTheme.colors.dashBoardGradientC17,
+  AppTheme.colors.dashBoardGradientC18,
+  AppTheme.colors.dashBoardGradientC10,
+  AppTheme.colors.dashBoardGradientC19,
+  AppTheme.colors.dashBoardGradientC20,
 ];
 
 List<DashBoardItem> dashBoardList = [

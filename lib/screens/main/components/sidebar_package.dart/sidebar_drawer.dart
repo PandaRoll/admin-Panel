@@ -30,92 +30,6 @@ class Sidebar extends StatefulWidget {
   _SidebarState createState() => _SidebarState();
 }
 
-class _SidebarState extends State<Sidebar> with SingleTickerProviderStateMixin {
-  static const double _maxSidebarWidth = 300;
-  double _sidebarWidth = _maxSidebarWidth;
-  List<int> activeTabIndices = [];
-
-  void initState() {
-    super.initState();
-
-    Future.delayed(Duration.zero, () {
-      if (activeTabIndices.isEmpty) {
-        List<int> newActiveTabData = _getFirstTabIndex(widget.tabs, []);
-        List<int> newActiveTabIndices = [];
-        newActiveTabIndices.add(newActiveTabData.first);
-        String tabId = newActiveTabData[1].toString();
-        if (newActiveTabIndices.length > 0) {
-          setActiveTabIndices(newActiveTabIndices);
-          widget.onTabChanged(tabId);
-        }
-      }
-    });
-  }
-
-  List<int> _getFirstTabIndex(
-      List<Map<String, dynamic>> tabs, List<int> indices) {
-    String tabId = "";
-    if (tabs.length > 0) {
-      Map<String, dynamic> firstTab = tabs[0];
-      tabId = firstTab['id'] ?? firstTab['title'];
-      indices.clear();
-      indices.add(0);
-
-      if (firstTab['children'] != null) {
-        final tabData = _getFirstTabIndex(firstTab['children'], indices);
-        indices.clear();
-        indices.add(tabData.first);
-        tabId = tabData[1].toString();
-      }
-    }
-    return [indices.first, int.parse(tabId)];
-  }
-
-  void setActiveTabIndices(List<int> newIndices) {
-    setState(() {
-      activeTabIndices = newIndices;
-    });
-  }
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    final mediaQuery = MediaQuery.of(context);
-    _sidebarWidth = min(mediaQuery.size.width * 0.7, _maxSidebarWidth);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Theme.of(context).canvasColor,
-      width: _sidebarWidth,
-      child: Column(
-        children: [
-          DrawerHeader(
-            child: ProfileCard(),
-          ),
-          Expanded(
-            child: ListView.builder(
-              itemBuilder: (BuildContext context, int index) => Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8),
-                child: SidebarItem(
-                  widget.tabs[index],
-                  widget.onTabChanged,
-                  activeTabIndices,
-                  setActiveTabIndices,
-                  index: index,
-                  indices: [],
-                ),
-              ),
-              itemCount: widget.tabs.length,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
 class SidebarItem extends StatelessWidget {
   final Map<String, dynamic> data;
   final void Function(String) onTabChanged;
@@ -136,11 +50,9 @@ class SidebarItem extends StatelessWidget {
           'Exactly one parameter out of [index, indices] has to be provided',
         );
 
-  bool _indicesMatch(List<int> a, List<int> b) {
-    for (int i = 0; i < min(a.length, b.length); i++) {
-      if (a[i] != b[i]) return false;
-    }
-    return true;
+  @override
+  Widget build(BuildContext context) {
+    return _buildTiles(data);
   }
 
   Widget _buildTiles(Map<String, dynamic> root) {
@@ -183,8 +95,96 @@ class SidebarItem extends StatelessWidget {
     );
   }
 
+  bool _indicesMatch(List<int> a, List<int> b) {
+    for (int i = 0; i < min(a.length, b.length); i++) {
+      if (a[i] != b[i]) return false;
+    }
+    return true;
+  }
+}
+
+class _SidebarState extends State<Sidebar> with SingleTickerProviderStateMixin {
+  static const double _maxSidebarWidth = 300;
+  double _sidebarWidth = _maxSidebarWidth;
+  List<int> activeTabIndices = [];
+
   @override
   Widget build(BuildContext context) {
-    return _buildTiles(data);
+    return Container(
+      color: Theme.of(context).canvasColor,
+      width: _sidebarWidth,
+      child: Column(
+        children: [
+          DrawerHeader(
+            child: ProfileCard(),
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemBuilder: (BuildContext context, int index) => Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                child: SidebarItem(
+                  widget.tabs[index],
+                  widget.onTabChanged,
+                  activeTabIndices,
+                  setActiveTabIndices,
+                  index: index,
+                  indices: [],
+                ),
+              ),
+              itemCount: widget.tabs.length,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final mediaQuery = MediaQuery.of(context);
+    _sidebarWidth = min(mediaQuery.size.width * 0.7, _maxSidebarWidth);
+  }
+
+  void initState() {
+    super.initState();
+
+    Future.delayed(Duration.zero, () {
+      if (activeTabIndices.isEmpty) {
+        List<int> newActiveTabData = _getFirstTabIndex(widget.tabs, []);
+        List<int> newActiveTabIndices = [];
+        newActiveTabIndices.add(newActiveTabData.first);
+        String tabId = newActiveTabData[1].toString();
+        if (newActiveTabIndices.length > 0) {
+          setActiveTabIndices(newActiveTabIndices);
+          widget.onTabChanged(tabId);
+        }
+      }
+    });
+  }
+
+  void setActiveTabIndices(List<int> newIndices) {
+    setState(() {
+      activeTabIndices = newIndices;
+    });
+  }
+
+  List<int> _getFirstTabIndex(
+      List<Map<String, dynamic>> tabs, List<int> indices) {
+    String tabId = "";
+    if (tabs.length > 0) {
+      Map<String, dynamic> firstTab = tabs[0];
+      tabId = firstTab['id'] ?? firstTab['title'];
+      indices.clear();
+      indices.add(0);
+
+      if (firstTab['children'] != null) {
+        final tabData = _getFirstTabIndex(firstTab['children'], indices);
+        indices.clear();
+        indices.add(tabData.first);
+        tabId = tabData[1].toString();
+      }
+    }
+    return [indices.first, int.parse(tabId)];
   }
 }

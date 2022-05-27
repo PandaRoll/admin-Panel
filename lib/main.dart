@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import 'screens/config/size_config.dart';
-import 'screens/dashboard/components/form.dart';
+import 'screens/main/main_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -37,9 +37,10 @@ class MyApp extends StatelessWidget {
                     create: (context) => MenuController(),
                   ),
                 ],
-                child: AllFieldsV1(
-                  title: 'Form',
-                ),
+                child: MainScreen(),
+                //     AllFieldsV1(
+                //   title: 'Form',
+                // ),
               ),
             );
           },

@@ -4,8 +4,6 @@ import 'package:admin/screens/main/json_to_form/json_to_form.dart';
 import 'package:flutter/material.dart';
 
 class AllFieldsV1 extends StatefulWidget {
-  AllFieldsV1({Key? key, required this.title}) : super(key: key);
-
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
   // how it looks.
@@ -17,6 +15,8 @@ class AllFieldsV1 extends StatefulWidget {
 
   final String title;
 
+  AllFieldsV1({Key? key, required this.title}) : super(key: key);
+
   @override
   _AllFieldsV1 createState() => new _AllFieldsV1();
 }
@@ -24,7 +24,7 @@ class AllFieldsV1 extends StatefulWidget {
 class _AllFieldsV1 extends State<AllFieldsV1> {
   String sendEmailForm = json.encode([
     {'type': 'Input', 'title': 'Subject', 'placeholder': "Subject"},
-    {'type': 'TareaText', 'title': 'Message', 'placeholder': "Content"},
+    {'type': 'Textarea', 'title': 'Message', 'placeholder': "Content"},
   ]);
   String form = json.encode([
     {
@@ -34,29 +34,6 @@ class _AllFieldsV1 extends State<AllFieldsV1> {
       'label': 'Username',
       'placeholder': "Enter Your Username",
       'required': true
-    },
-    {
-      'key': 2,
-      'type': 'Password',
-      'title': 'Password',
-      'label': 'Password',
-      'required': true
-    },
-    {
-      'type': 'Input',
-      'title': 'Hi Group',
-      'placeholder': "Hi Group flutter",
-      'validator': 'digitsOnly'
-    },
-    {
-      'type': 'Password',
-      'title': 'Password',
-    },
-    {'type': 'Email', 'title': 'Email test', 'placeholder': "hola a todos"},
-    {
-      'type': 'TareaText',
-      'title': 'TareaText test',
-      'placeholder': "hola a todos"
     },
     {
       'type': 'RadioButton',
@@ -78,12 +55,53 @@ class _AllFieldsV1 extends State<AllFieldsV1> {
       ]
     },
     {
+      'key': 2,
+      'type': 'Password',
+      'title': 'Password',
+      'label': 'Password',
+      'required': true
+    },
+    {
+      'type': 'Input',
+      'title': 'Hi Group',
+      'placeholder': "Hi Group flutter",
+      'validator': 'digitsOnly'
+    },
+    {
+      'type': 'Password',
+      'title': 'Password',
+    },
+    {'type': 'Email', 'title': 'Email test', 'placeholder': "hola a todos"},
+    {
+      'type': 'Textarea',
+      'title': 'Textarea test',
+      'placeholder': "hola a todos"
+    },
+    {
       'type': 'Switch',
       'title': 'Switch test',
       'switchValue': false,
     },
     {
       'type': 'Checkbox',
+      'title': 'Checkbox test',
+      'list': [
+        {
+          'title': "product 1",
+          'value': true,
+        },
+        {
+          'title': "product 2",
+          'value': false,
+        },
+        {
+          'title': "product 3",
+          'value': false,
+        }
+      ]
+    },
+    {
+      'type': 'Dropdown',
       'title': 'Checkbox test',
       'list': [
         {
@@ -157,7 +175,11 @@ class _AllFieldsV1 extends State<AllFieldsV1> {
             new ElevatedButton(
                 child: new Text('Send'),
                 onPressed: () {
-                  print(this.response.toString());
+                  // print(this.response.toString());
+                  var jsonSQList =
+                      response.map((item) => jsonEncode(item)).toList();
+                  var responseJSON = json.encoder.convert(jsonSQList);
+                  print(responseJSON);
                 })
           ]),
         ),

@@ -32,4 +32,6 @@ class ChartDetails extends StatelessWidget {
       ),
     );
   }
+
 }
+

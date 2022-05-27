@@ -1,6 +1,6 @@
 import 'package:admin/models/MyFiles.dart';
 import 'package:admin/responsive.dart';
-import 'package:admin/screens/json_to_form/form_page.dart';
+import 'package:admin/screens/dashboard/components/pluto_grid_demo.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
@@ -32,7 +32,11 @@ class FileInfoCardGridView extends StatelessWidget {
       itemBuilder: (context, index) => InkWell(
           onTap: () {
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => FormPage()));
+                context,
+                MaterialPageRoute(
+                    builder: (context) => PlutoGridDemo(
+                        // title: "form",
+                        )));
           },
           child: FileInfoCard(info: demoMyFiles[index])),
     );

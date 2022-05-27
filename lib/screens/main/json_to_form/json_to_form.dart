@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'package:admin/screens/main/json_to_form/components/simple_text.dart';
 import 'package:flutter/material.dart';
 
+import '../../../models/form_data_model.dart';
 import '../../config/size_config.dart';
 
 class CoreForm extends StatefulWidget {
@@ -42,6 +43,19 @@ class _CoreFormState extends State<CoreForm> {
 
   int radioValue = -1;
 
+  List<ResponseJsonModel> responseList = [];
+  _CoreFormState(this.formItems);
+  @override
+  Widget build(BuildContext context) {
+    return new Container(
+      padding: widget.padding ?? EdgeInsets.all(8),
+      child: new Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: jsonToForm(),
+      ),
+    );
+  }
+
   List<Widget> jsonToForm() {
     List<Widget> listWidget = [];
 
@@ -49,7 +63,7 @@ class _CoreFormState extends State<CoreForm> {
       if (item['type'] == "Input" ||
           item['type'] == "Password" ||
           item['type'] == "Email" ||
-          item['type'] == "TareaText") {
+          item['type'] == "Textarea") {
         listWidget.add(new Container(
             padding: new EdgeInsets.only(top: 5.0, bottom: 5.0),
             child: new Text(
@@ -62,7 +76,7 @@ class _CoreFormState extends State<CoreForm> {
                 child: SimpleText(
                   item: item,
                   onChange: onChange,
-                  position: 0,
+                  position: formItems.indexOf(item),
                   decorations: InputDecoration(border: InputBorder.none),
                 ))
 // Card(
@@ -91,7 +105,7 @@ class _CoreFormState extends State<CoreForm> {
 //                 disabledBorder: widget.disabledBorder ?? null,
 //                 hintText: item['placeholder'] ?? "",
 //               ),
-//               maxLines: item['type'] == "TareaText" ? 10 : 1,
+//               maxLines: item['type'] == "Textarea" ? 10 : 1,
 //               keyboardType: item['keyboardType'] != null
 //                   ? item['keyboardType'][item['key']]
 //                   : TextInputType.text,
@@ -179,27 +193,29 @@ class _CoreFormState extends State<CoreForm> {
     return listWidget;
   }
 
-  _CoreFormState(this.formItems);
-
-  void _handleChanged() {
-    widget.onChanged(formItems);
-  }
-
   void onChange(int position, dynamic value) {
     this.setState(() {
-      formItems[position]['value'] = value;
+      formItems[position]['value'] = "'" + value + "'";
+      ResponseJsonModel resJson = ResponseJsonModel(
+          title: formItems[position]['title'],
+          value: formItems[position]['value']);
+      if (value != "") {
+        if (responseList
+            .where(((element) => element.title == resJson.title))
+            .isEmpty) {
+          responseList.add(resJson);
+        } else {
+          responseList.remove(responseList
+              .firstWhere((element) => element.title == resJson.title));
+          responseList.add(resJson);
+        }
+      }
+
       _handleChanged();
     });
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return new Container(
-      padding: widget.padding ?? EdgeInsets.all(8),
-      child: new Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: jsonToForm(),
-      ),
-    );
+  void _handleChanged() {
+    widget.onChanged(responseList);
   }
 }

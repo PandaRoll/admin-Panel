@@ -20,5 +20,17 @@ class AppColors {
   final dashBoardGradientC10 = const Color(0xFFffc837);
   final dashBoardGradientC11 = const Color(0xFF3366FF);
   final dashBoardGradientC12 = const Color(0xFF00CCFF);
+  final dashBoardGradientC13 = const Color.fromARGB(255, 59, 1, 1);
+
+  final dashBoardGradientC14 = const Color.fromARGB(255, 255, 94, 94);
+
+  final dashBoardGradientC15 = const Color.fromARGB(255, 3, 100, 0);
+
+  final dashBoardGradientC16 = const Color.fromARGB(255, 76, 0, 255);
+  final dashBoardGradientC17 = const Color.fromARGB(255, 255, 0, 179);
+  final dashBoardGradientC18 = const Color.fromARGB(255, 255, 0, 85);
+  final dashBoardGradientC19 = const Color.fromARGB(255, 0, 17, 255);
+  final dashBoardGradientC20 = const Color.fromARGB(255, 174, 0, 255);
+
   const AppColors();
 }
