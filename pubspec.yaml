@@ -45,6 +45,12 @@ dependencies:
   collection: ^1.15.0
   sizer: ^2.0.15
   toggle_switch: ^2.0.1
+  pluto_grid: ^2.10.3
+  file_saver: ^0.1.0
+  permission_handler: ^9.2.0
+  json_dynamic_widget: ^4.1.1+1
+
+
   
 dev_dependencies:
   flutter_test:

@@ -1,5 +1,6 @@
 import 'package:admin/constants.dart';
 import 'package:admin/controllers/MenuController.dart';
+import 'package:admin/screens/dashboard/components/dynamic_widget_package_test.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -37,8 +38,9 @@ class MyApp extends StatelessWidget {
                     create: (context) => MenuController(),
                   ),
                 ],
+                //child: DynamicWidget(),
                 child: MainScreen(),
-                //     AllFieldsV1(
+                //child:   AllFieldsV1(
                 //   title: 'Form',
                 // ),
               ),

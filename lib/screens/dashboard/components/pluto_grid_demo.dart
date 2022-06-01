@@ -1,8 +1,10 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:admin/responsive.dart';
 import 'package:admin/screens/config/size_config.dart';
 import 'package:admin/screens/dashboard/components/dynamic_button_widget.dart';
+import 'package:admin/screens/dashboard/components/dynamic_filter_widget.dart';
 import 'package:admin/screens/dashboard/report_data.dart';
 import 'package:file_saver/file_saver.dart';
 import 'package:flutter/material.dart';
@@ -86,7 +88,7 @@ dynamic headerJson = [
     'field': 'TYPE',
     'type': 'button',
     'textAlign': 'left',
-    'width': 300.0,
+    'width': 200.0,
     'data': [
       {
         'type': 'text_button',
@@ -94,12 +96,12 @@ dynamic headerJson = [
         'action': '',
         'content': 'Delete',
       },
-      {
-        'type': 'text_button',
-        'color': 'green',
-        'action': '',
-        'content': 'Approve',
-      },
+      // {
+      //   'type': 'text_button',
+      //   'color': 'green',
+      //   'action': '',
+      //   'content': 'Approve',
+      // },
       {
         'type': 'icon_button',
         'color': 'blue',
@@ -107,7 +109,7 @@ dynamic headerJson = [
         'content': 'icon_save',
       },
     ],
-  }
+  },
 ];
 // List<PlutoColumn> columns = [
 //   /// Text Column definition
@@ -147,7 +149,7 @@ dynamic headerJson = [
 // ];
 dynamic widthJson = {
   'ADDRESS': 200.0,
-  'TYPE': 300.0,
+  'TYPE': 200.0,
 };
 // List<PlutoRow> rows = [
 //   PlutoRow(
@@ -203,11 +205,40 @@ class _PlutoGridDemoState extends State<PlutoGridDemo> {
     return SafeArea(
         child: Scaffold(
       appBar: AppBar(title: Text("GRID"), actions: [
-        ElevatedButton(
-            onPressed: () {
-              _defaultExportGridAsCSV();
-            },
-            child: Icon(Icons.import_export_rounded))
+        if (Responsive.isMobile(context)) ...[
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ElevatedButton(
+                onPressed: () {
+                  showDialog(
+                      context: context,
+                      builder: (context) {
+                        return ConstrainedBox(
+                          constraints: BoxConstraints(maxHeight: 500),
+                          child: AlertDialog(
+                            contentPadding: EdgeInsets.zero,
+                            insetPadding: EdgeInsets.zero,
+                            backgroundColor: Colors.grey,
+                            content: SizedBox(
+                                width: SizeConfig.screenwidth,
+                                // height: 500,
+                                child: SingleChildScrollView(
+                                    child: DynamicFilterWidget(data_json: ""))),
+                          ),
+                        );
+                      });
+                },
+                child: Icon(Icons.filter_alt)),
+          )
+        ],
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: ElevatedButton(
+              onPressed: () {
+                _defaultExportGridAsCSV();
+              },
+              child: Icon(Icons.import_export_rounded)),
+        )
       ]),
       body: WillPopScope(
         onWillPop: () async {
@@ -215,67 +246,101 @@ class _PlutoGridDemoState extends State<PlutoGridDemo> {
           Navigator.pop(context);
           return true;
         },
-        child: SizedBox(
-          height: SizeConfig.screenheight,
-          //  width: SizeConfig.screenwidth,
-          child: PlutoGrid(
-            rows: getRows(json.encode(headerJson), json.encode(report_data)),
-            columns:
-                getColumns(json.encode(headerJson), json.encode(widthJson)),
-            onRowDoubleTap: (event) {
-              print(event.row!.sortIdx.toString());
-            },
-            onRowChecked: (event) {
-              print(event.row!.sortIdx.toString());
-            },
-            onChanged: (PlutoGridOnChangedEvent event) {
-              //   print(event);
-            },
-            onLoaded: (PlutoGridOnLoadedEvent event) {
-              event.stateManager.setShowColumnFilter(true);
-              event.stateManager.notifyListeners();
-              // for (PlutoColumn column in event.stateManager.columns) {
-              //   if ((widthJson)[column.field] == null) {
-              //     event.stateManager.autoFitColumn(context, column);
-              //     event.stateManager.notifyListeners();
-              //   }
-              // }
-              setState(() {
-                isloading = false;
-              });
-              //print(event);
-            },
-            configuration: PlutoGridConfiguration(
-              enableColumnBorder: true,
-              gridBorderColor: Colors.black,
-              enableGridBorderShadow: true,
-              columnFilterConfig: PlutoGridColumnFilterConfig(
-                resolveDefaultColumnFilter: (column, resolver) {
-                  // if (column.field == 'text') {
-                  //   return resolver<PlutoFilterTypeContains>()
-                  //       as PlutoFilterType;
-                  // } else if (column.field == 'number') {
-                  //   return resolver<PlutoFilterTypeGreaterThan>()
-                  //       as PlutoFilterType;
-                  // } else if (column.field == 'date') {
-                  //   return resolver<PlutoFilterTypeLessThan>()
-                  //       as PlutoFilterType;
-                  // } else if (column.field == 'select') {
-                  //   return resolver<ClassYouImplemented>() as PlutoFilterType;
-                  // }
+        child: OrientationBuilder(builder: (context, orientation) {
+          return SizedBox(
+            height: orientation == Orientation.portrait
+                ? SizeConfig.screenheight
+                : SizeConfig.screenwidth,
+            width: orientation == Orientation.portrait
+                ? SizeConfig.screenwidth
+                : SizeConfig.screenheight,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                if (!Responsive.isMobile(context))
+                  DynamicFilterWidget(data_json: ""),
+                Expanded(
+                  child: PlutoGrid(
+                    rows: getRows(
+                        json.encode(headerJson), json.encode(report_data)),
+                    columns: getColumns(
+                        json.encode(headerJson), json.encode(widthJson)),
+                    onRowDoubleTap: (event) {
+                      print(event.row!.sortIdx.toString());
+                    },
+                    onRowChecked: (event) {
+                      print(event.row!.sortIdx.toString());
+                    },
+                    onChanged: (PlutoGridOnChangedEvent event) {
+                      //   print(event);
+                    },
+                    onLoaded: (PlutoGridOnLoadedEvent event) {
+                      event.stateManager.setShowColumnFilter(true);
+                      event.stateManager.notifyListeners();
 
-                  return resolver<PlutoFilterTypeContains>() as PlutoFilterType;
-                },
-              ),
+                      // for (PlutoColumn column in event.stateManager.columns) {
+                      //   if ((widthJson)[column.field] == null) {
+                      //     event.stateManager.autoFitColumn(context, column);
+                      //     event.stateManager.notifyListeners();
+                      //   }
+                      // }
+                      setState(() {
+                        isloading = false;
+                      });
+                      //print(event);
+                    },
+                    configuration: PlutoGridConfiguration(
+                      enableColumnBorder: true,
+                      iconColor: Colors.white,// pagination icons
+                      gridBorderColor: Colors.white,
+                      disabledIconColor: Colors.grey,// pagination icons
+                      cellColorInEditState: Color.fromARGB(255, 1, 52, 94),//Filter fielld color
+                      
+                      gridBackgroundColor: Color(0xff212332),
+                      cellTextStyle: TextStyle(color: Colors.white),
+                      columnTextStyle: TextStyle(color: Colors.white),
+                      enableGridBorderShadow: true,
+                      menuBackgroundColor: Color(0xff222532),
+                      activatedColor: Colors.blue, //selected row color
+                      columnFilterConfig: PlutoGridColumnFilterConfig(
+                        resolveDefaultColumnFilter: (column, resolver) {
+                          // if (column.field == 'text') {
+                          //   return resolver<PlutoFilterTypeContains>()
+                          //       as PlutoFilterType;
+                          // } else if (column.field == 'number') {
+                          //   return resolver<PlutoFilterTypeGreaterThan>()
+                          //       as PlutoFilterType;
+                          // } else if (column.field == 'date') {
+                          //   return resolver<PlutoFilterTypeLessThan>()
+                          //       as PlutoFilterType;
+                          // } else if (column.field == 'select') {
+                          //   return resolver<ClassYouImplemented>() as PlutoFilterType;
+                          // }
+                          if (column.field == "date") {
+                            return resolver<PlutoFilterTypeLessThan>()
+                                as PlutoFilterType;
+                          } else {
+                            return resolver<PlutoFilterTypeContains>()
+                                as PlutoFilterType;
+                          }
+                        },
+                      ),
+                    ),
+                    createFooter: (stateManager) {
+                      _stateManager = stateManager;
+
+                      stateManager.setPageSize(20, notify: false); // default 40
+                      return PlutoPagination(
+                        stateManager,
+                      );
+                    },
+                  ),
+                ),
+              ],
             ),
-            createFooter: (stateManager) {
-              _stateManager = stateManager;
-
-              stateManager.setPageSize(20, notify: false); // default 40
-              return PlutoPagination(stateManager);
-            },
-          ),
-        ),
+          );
+        }),
       ),
     ));
   }
@@ -316,6 +381,8 @@ class _PlutoGridDemoState extends State<PlutoGridDemo> {
               jsonData['type'],
               jsonData['data'] ?? "",
             ),
+            enableColumnDrag: false,
+            enableContextMenu: false,
             renderer: (renderContext) {
               // return Row(
               //     mainAxisSize: MainAxisSize.max,
@@ -328,11 +395,15 @@ class _PlutoGridDemoState extends State<PlutoGridDemo> {
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
                   itemBuilder: (BuildContext context, index) {
-                    return DynamicButton(
-                      button_data: jsonData['data'][index],
-                      onTap: (v) {
-                        _stateManager.removeRows([renderContext.row]);
-                      },
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 5, vertical: 2),
+                      child: DynamicButton(
+                        button_data: jsonData['data'][index],
+                        onTap: (v) {
+                          _stateManager.removeRows([renderContext.row]);
+                        },
+                      ),
                     );
                   });
               //  ]
@@ -378,6 +449,7 @@ class _PlutoGridDemoState extends State<PlutoGridDemo> {
                 : widthJson[jsonData['field']],
             title: jsonData['title'],
             field: jsonData['field'],
+            enableFilterMenuItem: true,
             type: getType(
               jsonData['type'],
               jsonData['data'] ?? "",
